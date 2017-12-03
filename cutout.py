@@ -25,19 +25,6 @@ def look_parent(i,j):
 			parent[i][j] = look_parent(parent[i][j][0], parent[i][j][1])
 	return parent[i][j]
 
-def search(lst, target):
-	min = 0
-	max = len(lst)-1
-	avg = (min+max)//2
-	while (min < max):
-		if (lst[avg] == target):
-			return avg
-		elif (lst[avg] < target):
-			return avg + 1 + search(lst[avg+1:], target)
-		else:
-			return search(lst[:avg], target)
-	return avg
-
 def main(filein, fileout, radius=3, treshold=150):
 	global img_row
 	global img_col
