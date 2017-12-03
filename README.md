@@ -2,6 +2,12 @@
 
 A simple image segmentation, applied to make a [cutout](https://helpx.adobe.com/photoshop/using/filter-effects-reference.html) filter.
 
+## Usage
+
+```
+python3 cutout.py input.jpg output.jpg <TRESHOLD> <RADIUS>
+```
+
 ## Result
 
 Original | Result
