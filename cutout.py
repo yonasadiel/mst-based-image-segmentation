@@ -147,5 +147,7 @@ if __name__ == '__main__':
 	time_start = time.time()
 	if (len(sys.argv) <= 3):
 		main(sys.argv[1], sys.argv[2])
-	else:
+	elif (len(sys.argv) <= 4):
 		main(sys.argv[1], sys.argv[2], treshold=int(sys.argv[3]))
+	else:
+		main(sys.argv[1], sys.argv[2], treshold=int(sys.argv[3]), radius=int(sys.argv[4]))
