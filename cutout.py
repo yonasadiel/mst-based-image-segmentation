@@ -26,17 +26,17 @@ def look_parent(i,j):
 	return parent[i][j]
 
 def search(lst, target):
-  min = 0
-  max = len(lst)-1
-  avg = (min+max)//2
-  while (min < max):
-    if (lst[avg] == target):
-      return avg
-    elif (lst[avg] < target):
-      return avg + 1 + search(lst[avg+1:], target)
-    else:
-      return search(lst[:avg], target)
-  return avg
+	min = 0
+	max = len(lst)-1
+	avg = (min+max)//2
+	while (min < max):
+		if (lst[avg] == target):
+			return avg
+		elif (lst[avg] < target):
+			return avg + 1 + search(lst[avg+1:], target)
+		else:
+			return search(lst[:avg], target)
+	return avg
 
 def main(filein, fileout, radius=3, treshold=150):
 	global img_row
@@ -105,7 +105,19 @@ def main(filein, fileout, radius=3, treshold=150):
 	parent_i = [[0 for i in range(img_col)] for j in range(img_row)]
 	for i in range(img_row):
 		for j in range(img_col):
-			parent_i[i][j] = search(parent_list, look_parent(i, j))
+			target = look_parent(i,j)
+			min_i = 0
+			max_i = len(parent_list)-1
+			mid_i = 0
+			while (min_i < max_i):
+				mid_i = (min_i+max_i)//2
+				if (parent_list[mid_i] == target):
+					break
+				elif (parent_list[mid_i] < target):
+					min_i = mid_i+1
+				else:
+					max_i = mid_i
+			parent_i[i][j] = mid_i
 	print('[%7.3f] %d parent listed' %(time.time() - time_start, len(parent_list)))
 	
 	# count average every set
